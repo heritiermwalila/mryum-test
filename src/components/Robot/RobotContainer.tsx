@@ -4,9 +4,11 @@ import {
   getXCoordinate,
   getYCoordinate,
 } from "../../lib/direction";
-import { Direction } from "../../type";
+import { Direction, IReport } from "../../type";
+import RobotMovementController from "../Controls/RobotMovementController";
 import { Table } from "../Table";
 import "./Robot.scss";
+import RobotReport from "./RobotReport";
 
 interface RobotContainerProps {
   name: string;
@@ -19,9 +21,9 @@ interface RobotContainerProps {
   onTurnRight?: () => void;
   onResetPosition?: () => void;
   onPlaceRobot?: () => void;
-  isPlaced?: boolean;
+  isPlaced: boolean;
   onReport?: () => void;
-  report?: Record<string, any>
+  report?: IReport
 }
 const RobotContainer = ({
   name,
@@ -117,20 +119,8 @@ const RobotContainer = ({
             </div>
           </>
         )}
-        {isPlaced && (
-          <div>
-            <h4>Controls</h4>
-            <button className="Button" onClick={onTurnLeft}>
-              Turn Left
-            </button>
-            <button className="Button Button-Black" onClick={onMove}>
-              Move
-            </button>
-            <button className="Button" onClick={onTurnRight}>
-              Turn Right
-            </button>
-          </div>
-        )}
+        
+        <RobotMovementController {...{isPlaced, onTurnLeft, onMove, onTurnRight}}/>
 
         {isPlaced && <>
           <div>
@@ -144,24 +134,7 @@ const RobotContainer = ({
 
             
           </div>
-          <div>
-              <table>
-                  <thead>
-                      <tr>
-                          <td>X POSITION</td>
-                          <td>Y POSITION</td>
-                          <td>DIRECTION</td>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>{report?.x}</td>
-                          <td>{report?.y}</td>
-                          <td>{report?.direction}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
+          <RobotReport {...{report}}/>
         </>}
       </div>
     </div>

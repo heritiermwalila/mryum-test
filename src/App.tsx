@@ -1,13 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { MrYumRobot, RobotContainer } from './components/Robot';
-import { Direction } from './type';
 import { canRobotMove, getRobotPosition, getXCoordinate, getYCoordinate, isValideCoordinates, isValideDirection } from './lib/direction';
+import { Direction, IReport } from './type';
 
 function App() {
 
-  const [report, setReport] = React.useState<Record<string, any>>()
+  const [report, setReport] = React.useState<IReport>()
   const [place, setPlace] = React.useState<boolean>(false)
   const [direction, setDirection] = React.useState<Direction>('NORTH')
   const [coord, setCoord] = React.useState<{x: number; y: number}>({x:getXCoordinate("0"),y:getYCoordinate("4")})
