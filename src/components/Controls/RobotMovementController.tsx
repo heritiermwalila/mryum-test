@@ -1,4 +1,4 @@
-interface RobotMovementControllerProps {
+export interface RobotMovementControllerProps {
     isPlaced: boolean;
     onTurnLeft?: () => void;
     onMove?: () => void;

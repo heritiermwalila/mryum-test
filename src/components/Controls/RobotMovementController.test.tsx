@@ -1,11 +1,24 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import RobotMovementController, { RobotMovementControllerProps } from './RobotMovementController'
 
 
-const props = {
- 
+const props: RobotMovementControllerProps = {
+    isPlaced: true,
+    onTurnLeft: function() {},
+    onTurnRight: function() {}
+
 }
 
 test('renders Robot Movement Controller', () => {
-//   render(<RobotContainer {...{x:0, y:80, f: 'NORTH', place: true}}/>);
+  const {getByText} = render(<RobotMovementController {...{...props}}/>);
+
+  expect(getByText('Controls')).toBeInTheDocument()
+  expect(getByText('Turn Left')).toBeInTheDocument()
 });
+
+test('It should click on left button', () => {
+    render(<RobotMovementController {...{...props}}/>);
+    fireEvent.click(screen.getByText('Turn Left'))
+    fireEvent.click(screen.getByText('Turn Right'))
+})
