@@ -1,0 +1,58 @@
+.Robot {
+    width: 18%;
+    height: 18%;
+    position:absolute;
+    padding: 5px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+   
+
+    &-Container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding:20px;
+    }
+
+    &-Item {
+        background: red;
+    }
+
+    &-Control {
+        h4 {
+            text-transform: uppercase;
+        }
+        input {
+            padding: 15px 10px;
+            width: 40%;
+        }
+        select {
+            padding: 15px 10px;
+        }
+    }
+}
+
+table {
+    width: 50%;
+    margin: 10px  auto;
+    td,th {
+        border: 1px solid #f1f1f1;
+        padding: 5px
+    }
+    
+    border-collapse: collapse;
+
+    thead {
+        tr {
+            td {
+                padding: 10px
+            }
+        }
+    }
+}

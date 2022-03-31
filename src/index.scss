@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Button {
+  padding: 15px 20px;
+  border: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: #53f;
+  color: #fff;
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+  &-Black {
+    background-color: #000;
+  }
+}
