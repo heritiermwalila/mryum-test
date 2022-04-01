@@ -9,6 +9,7 @@ export default function RobotMovementController({isPlaced, onTurnLeft, onMove, o
 
     if(!isPlaced) return null
     return <div>
+      <strong>Coordinate start from 0 to 4</strong>
     <h4>Controls</h4>
     <button className="Button" onClick={onTurnLeft}>
       Turn Left

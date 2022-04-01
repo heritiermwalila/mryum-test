@@ -85,7 +85,9 @@ const RobotContainer = ({
             <p>
               Enter coordinates and select direction to place the robot on the
               table
+              
             </p>
+            <strong>Coordinate start from 0 to 4</strong>
             <div className="Robot-Control-Input">
               <input
                 ref={inputRef}
