@@ -1,7 +1,7 @@
 const util = require('./util')
 
 class MrYumRobot {
-    constructor(){
+    constructor() {
         this.xPos = 0,
         this.yPos = 0;
         this.direction = util.direction.NORTH
@@ -14,6 +14,8 @@ class MrYumRobot {
             this.xPos = x
             this.yPos = y
             this.direction = f
+        }else {
+            console.log('INVALID COORD', x, y, f);
         }
     }
     /**
@@ -22,7 +24,8 @@ class MrYumRobot {
      * @param {*} y 
      */
     isValideCoord(x, y){
-        if(x <= this.limit.x && x >= 0 && (this.y <= this.limit.y && y>=0)){
+        console.log((x <= this.limit.x && x >= 0));
+        if((x <= this.limit.x && x >= 0) && (this.yPos <= this.limit.y && y>=0)){
             return true
         }
 
@@ -43,36 +46,38 @@ class MrYumRobot {
     }
 
     onMoveRobot(){
+        console.log(this.direction);
         switch (this.direction) {
-            case util.direction.NORTH: {
-                if(this.y + 1 < this.limit.y){
-                    this.y += 1
+            case util.direction.NORTH: 
+                if(this.yPos + 1 < this.limit.y){
+                    this.yPos += 1
                 }
 
-                return
-            }
+                break
                 
-            case util.direction.EAST: {
-                if(this.x + 1 < this.limit.x){
-                    this.x += 1
+            case util.direction.EAST: 
+                if(this.xPos + 1 < this.limit.x){
+                    this.xPos += 1
                 }
 
-                return
-            }
+                break
 
-            case util.direction.SOUTH: {
-                if(this.y - 1 >=0){
-                    this.y -= 1
+            case util.direction.SOUTH: 
+                if(this.yPos - 1 >=0){
+                    this.yPos -= 1
                 }
 
-                return
-            }
+                break
 
-            case util.direction.WEST: {
-                if(this.x - 1 >= 0){
-                    this.x -= 1
+            case util.direction.WEST: 
+                if(this.xPos - 1 >= 0){
+                    this.xPos -= 1
+                
                 }
-            }
+                break
+            default:
+                console.log('INVALID DIRECTIO');
+                break
         }
     }
 

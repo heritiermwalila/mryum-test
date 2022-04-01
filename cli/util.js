@@ -36,7 +36,7 @@ module.exports = {
         WEST: 'WEST'
     },
     limits: {
-        x: 80,
-        y: 80,
+        x: 5,
+        y: 5,
     }
 }

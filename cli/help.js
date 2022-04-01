@@ -2,6 +2,17 @@ module.exports = {
     cmd: {
         type: 'input',
         name: 'action',
-        message: 'Use help for a list of commands'
+        message: 'Use ENTER to view a list of commands'
+    },
+    cmdList: {
+        type: 'input',
+        name: 'list',
+        message: `
+        Use the the following:
+        MOVE: make a move
+        LEFT: turn left
+        RIGHT: turn right
+        QUIT: quit the game
+        : `
     }
 }
