@@ -9,8 +9,12 @@ class RobotHandler {
         this.robot = new Robot()
     }
     init() {
-        this.showBoard()
+        this.enterOrQuitBoard()
     }
+
+    /**
+     * Command execution
+     */
     execute(cmd){
         
         if(cmd.startsWith('PLACE')){
@@ -57,7 +61,11 @@ class RobotHandler {
         }
     }
 
-    async showBoard(){
+    /**
+     * Show robot starting board
+     * @returns 
+     */
+    async enterOrQuitBoard(){
         const cmd = await inquire.prompt(command.cmd)
 
         if(cmd.action.toUpperCase() === 'ENTER') return this.getStarted()

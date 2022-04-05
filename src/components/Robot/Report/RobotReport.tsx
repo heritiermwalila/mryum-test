@@ -1,4 +1,4 @@
-import { IReport } from "../../type"
+import { IReport } from "../../../type"
 
 interface RobotReportProps {
     report?: IReport

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { IReport } from '../../type';
+import { IReport } from '../../../type';
 import RobotReport from './RobotReport'
 
 

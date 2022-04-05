@@ -1,4 +1,3 @@
-import { MrYumRobotProps } from "../Robot/MrYum"
 import './Table.scss'
 
 interface TableProps {

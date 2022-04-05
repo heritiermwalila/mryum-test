@@ -9,6 +9,12 @@ class MrYumRobot {
         this.isRobotPlaced =  false
     }
 
+    /**
+     * Place the robot on the table of x,y and direction
+     * @param {number*} x 
+     * @param {number} y 
+     * @param {string} f 
+     */
     onPlaceRobot(x, y, f){
         if(this.isValideCoord(x, y) && this.isValidDirection(f)){
             this.xPos = x
@@ -20,8 +26,8 @@ class MrYumRobot {
     }
     /**
      * Check if is valid coordinates
-     * @param {*} x 
-     * @param {*} y 
+     * @param {number} x 
+     * @param {number} y 
      */
     isValideCoord(x, y){
         console.log((x <= this.limit.x && x >= 0));
@@ -34,7 +40,7 @@ class MrYumRobot {
 
     /**
      * Check if it is a valide direction
-     * @param {*} direction 
+     * @param {string} direction 
      * @returns 
      */
     isValidDirection(direction){
@@ -45,6 +51,9 @@ class MrYumRobot {
         return true
     }
 
+    /**
+     * Move the robot forward
+     */
     onMoveRobot(){
         console.log(this.direction);
         switch (this.direction) {

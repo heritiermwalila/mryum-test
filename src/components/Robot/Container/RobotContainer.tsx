@@ -3,25 +3,27 @@ import {
   DIRECTIONS,
   getXCoordinate,
   getYCoordinate,
-} from "../../lib/direction";
-import { Direction, IReport } from "../../type";
-import RobotMovementController from "../Controls/RobotMovementController";
-import { Table } from "../Table";
-import "./Robot.scss";
-import RobotReport from "./RobotReport";
+} from "../../../lib/direction";
+import { Direction, IReport } from "../../../type";
+import RobotMovementController from "../../Controls/RobotMovementController";
+import CoordinateInput from "../../Cordinate/Input";
+import DirectionList from "../../DirectionList";
+import { Table } from "../../Table";
+import RobotReport from "../Report/RobotReport";
+import "../Robot.scss";
 
-interface RobotContainerProps {
+export interface RobotContainerProps {
   name: string;
   renderBot: JSX.Element;
-  onChangeDirection?: (direction: Direction) => void;
   currentDirection: Direction;
+  isPlaced: boolean;
+  onChangeDirection?: (direction: Direction) => void;
   onSetCoordinates?: (coordinates: { x: number; y: number }) => void;
   onMove?: () => void;
   onTurnLeft?: () => void;
   onTurnRight?: () => void;
   onResetPosition?: () => void;
   onPlaceRobot?: () => void;
-  isPlaced: boolean;
   onReport?: () => void;
   report?: IReport
 }
@@ -46,6 +48,9 @@ const RobotContainer = ({
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const onInputValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if(!e.target.value.startsWith('PLACE')){
+      
+    }
     const coordinates = e.target.value?.split(",");
     if (!coordinates.every((coord) => Number.isInteger(+coord))) {
       alert("Invalid coordinates");
@@ -89,27 +94,8 @@ const RobotContainer = ({
             </p>
             <strong>Coordinate start from 0 to 4</strong>
             <div className="Robot-Control-Input">
-              <input
-                ref={inputRef}
-                type="text"
-                placeholder="Example: 0,2"
-                className="Robot-Input"
-                onChange={onInputValueChange}
-              />
-              <select
-                name=""
-                id="direction"
-                defaultValue={currentDirection}
-                onChange={(e) =>
-                  onChangeDirection?.(e.target.value as Direction)
-                }
-              >
-                {DIRECTIONS?.map((direction) => (
-                  <option key={direction} value={direction}>
-                    {direction}
-                  </option>
-                ))}
-              </select>
+              <CoordinateInput {...{onInputValueChange, ref: inputRef}} />
+              <DirectionList {...{currentDirection, directions: DIRECTIONS, onChangeDirection: (value) => onChangeDirection?.(value)}} />
               <div>
                 <button
                   className="Button Button-Place"
